@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "The AutoRia Price Analysis",
-  "version": "0.1",
-  "description": "The plugin for displaying analytics on the website auto.ria.com",
+  "name": "React Chrome Extension",
+  "version": "1.0",
+  "description": "A React-based Chrome Extension",
   "action": {
     "default_popup": "index.html",
     "default_icon": {
       "16": "icon-16.png",
-      "48": "icon-64.png",
+      "48": "icon-48.png",
       "128": "icon-128.png"
     }
   },
