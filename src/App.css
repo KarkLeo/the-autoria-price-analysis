@@ -12,8 +12,17 @@
   color: #61dafb;
 }
 
+.recharts-tooltip-label {
+  color: #565656;
+  font-weight: 700;
+}
+
 .message {
   margin: 2rem auto;
   max-width: 600px;
   line-height: 1.5;
+}
+
+.error {
+  color: #ff1744;
 }
