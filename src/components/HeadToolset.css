@@ -1,8 +1,8 @@
 .head-toolset {
-  padding: .8rem 1.2rem;
+  padding: 1.2rem 1.2rem .8rem;
   width: 100%;
-  display: grid;
-  grid-template-columns: min-content 1fr min-content;
+  display: flex;
+  justify-content: space-between;
   gap: 1rem;
   box-sizing: border-box;
 }
@@ -42,6 +42,9 @@
 }
 
 .head-toolset__buttons-set {
+  position: relative;
+  z-index: 99;
+
   display: flex;
   gap: 0;
 }

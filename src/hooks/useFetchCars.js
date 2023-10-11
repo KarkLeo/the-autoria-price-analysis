@@ -3,10 +3,12 @@ import axios from "axios";
 import {paginateURL} from "../tools/paginateURL";
 import {parseCars} from "../tools/parseCars";
 
-export const useFetchCars = (url, setCars, setLoading, setLoadedCount) => {
+export const useFetchCars = (url, setCars, setLoading, setLoadedCount, setIsError) => {
   return useCallback(async () => {
     setLoading(true)
+    setCars([])
     setLoadedCount(0)
+    setIsError(false)
     const fetch = async (pageIndex = 0) => {
       try {
         console.log(`Try to fetch page ${pageIndex + 1}`)
@@ -30,8 +32,12 @@ export const useFetchCars = (url, setCars, setLoading, setLoadedCount) => {
         }
       } catch (e) {
         console.log(e);
+        setIsError(true)
+        setLoading(false)
+        setCars([])
+        setLoadedCount(0)
       }
     }
     await fetch()
-  }, [url, setCars, setLoading, setLoadedCount])
+  }, [url, setCars, setLoading, setLoadedCount, setIsError])
 }

@@ -1,0 +1,65 @@
+.chart__wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chart__title {
+  margin: 0 0 .2em;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #cecece;
+}
+
+.chart__description {
+  margin:  0 .6em;
+
+  font-size: 0.9rem;
+  color: #adadad;
+}
+
+.chart__diagram {
+  min-width: 240px;
+  min-height: 320px;
+  height: auto;
+}
+
+.chart--small-pie {
+  min-width: 240px;
+  min-height: 240px;
+  height: auto;
+}
+
+.chart--small {
+  min-width: 480px;
+  min-height: 200px;
+  height: auto;
+}
+
+/*===== Main Chart =====*/
+
+.main-chart__wrap {
+  min-width: 760px;
+  min-height: 400px;
+  height: auto;
+}
+
+/*===== Second Charts =====*/
+
+.second-charts__wrap {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
+/*===== Other Charts =====*/
+
+.other-charts__wrap {
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
