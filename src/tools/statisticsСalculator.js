@@ -30,8 +30,7 @@ export const calcStandardDeviation = (data) => {
   const average = calcAverage(data)
   const squareDiffs = data.map((value) => {
     const diff = value - average
-    const sqrDiff = diff * diff
-    return sqrDiff
+    return diff * diff
   })
   const avgSquareDiff = calcAverage(squareDiffs)
   const stdDev = Math.sqrt(avgSquareDiff)

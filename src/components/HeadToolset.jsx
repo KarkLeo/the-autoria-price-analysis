@@ -8,7 +8,7 @@ export const HeadToolset = ({ mode, step, setMode, setStep }) => {
       <div className='head-toolset__item'>
         <span className='head-toolset__label'>Вид:</span>
         <div className='head-toolset__buttons-set'>
-          {MODE.map((item, index) => (
+          {MODE.map((item) => (
             <button
               className='head-toolset__button-item'
               key={item}
@@ -24,7 +24,7 @@ export const HeadToolset = ({ mode, step, setMode, setStep }) => {
         <div className='head-toolset__item'>
           <span className='head-toolset__label'>Шаг шкали($):</span>
           <div className='head-toolset__buttons-set'>
-            {STEPS.map((item, index) => (
+            {STEPS.map((item) => (
               <button
                 className='head-toolset__button-item'
                 key={item}
