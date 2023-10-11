@@ -16,11 +16,11 @@
 
   background-color: var(--color);
   border: none;
-  border-radius: .6em;
+  border-radius: 0.6em;
   cursor: pointer;
-  transition: all 0.2s ease-in-out
+  transition: all 0.2s ease-in-out;
 }
 
 .loading-button__control:hover {
-  box-shadow:  0 0 0 0.2rem rgba(255, 174, 0, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 174, 0, 0.5);
 }

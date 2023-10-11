@@ -4,14 +4,14 @@ export const createDatasetForChartByYears = (data = {}) => {
   let overallYearsDataset = {}
 
   for (const key in data) {
-    const {count, years} = data[key]
+    const { count, years } = data[key]
     dataset.push({
       price: key,
       count,
-      ...years
+      ...years,
     })
 
-    allYears = {...allYears, ...years}
+    allYears = { ...allYears, ...years }
 
     for (const year in years) {
       if (overallYearsDataset[year]) {
@@ -24,13 +24,13 @@ export const createDatasetForChartByYears = (data = {}) => {
 
   const sortedYears = Object.keys(allYears).sort((a, b) => a - b)
   const overallYears = Object.entries(overallYearsDataset)
-    .map(([key, value]) => ({key, value}))
+    .map(([key, value]) => ({ key, value }))
     .sort((a, b) => a.key - b.key)
 
   return {
     data: dataset,
     scale: sortedYears,
-    overallData: overallYears
+    overallData: overallYears,
   }
 }
 
@@ -40,14 +40,14 @@ export const createDatasetForChartByModels = (data = {}) => {
   let overallModelsDataset = {}
 
   for (const key in data) {
-    const {count, models} = data[key]
+    const { count, models } = data[key]
     dataset.push({
       price: key,
       count,
-      ...models
+      ...models,
     })
 
-    allModels = {...allModels, ...models}
+    allModels = { ...allModels, ...models }
 
     for (const model in models) {
       if (overallModelsDataset[model]) {
@@ -60,12 +60,12 @@ export const createDatasetForChartByModels = (data = {}) => {
 
   const overallModels = Object.entries(overallModelsDataset)
     .sort((a, b) => b[1] - a[1])
-    .map(([key, value]) => ({key, value}))
+    .map(([key, value]) => ({ key, value }))
 
   return {
     data: dataset,
     scale: Object.keys(allModels),
-    overallData: overallModels
+    overallData: overallModels,
   }
 }
 
@@ -75,14 +75,14 @@ export const createDatasetForChartByMileage = (data = {}) => {
   let overallMileageDataset = {}
 
   for (const key in data) {
-    const {count, mileage} = data[key]
+    const { count, mileage } = data[key]
     dataset.push({
       price: key,
       count,
-      ...mileage
+      ...mileage,
     })
 
-    allMileage = {...allMileage, ...mileage}
+    allMileage = { ...allMileage, ...mileage }
 
     for (const item in mileage) {
       if (overallMileageDataset[item]) {
@@ -95,20 +95,19 @@ export const createDatasetForChartByMileage = (data = {}) => {
 
   const sortedMileage = Object.keys(allMileage).sort((a, b) => a - b)
   const overallMileage = Object.entries(overallMileageDataset)
-    .map(([key, value]) => ({key, value}))
+    .map(([key, value]) => ({ key, value }))
     .sort((a, b) => a.key - b.key)
 
   return {
     data: dataset,
     scale: sortedMileage,
-    overallData: overallMileage
+    overallData: overallMileage,
   }
 }
 
-
 export const createDatasetForChartByYearsAndPriceRange = (data = []) => {
   const dataset = data.reduce((acc, item) => {
-    const {year, priceUSD} = item
+    const { year, priceUSD } = item
 
     if (acc[year]) {
       acc[year].middle = Math.round((acc[year].middle + priceUSD) / 2)
@@ -118,7 +117,7 @@ export const createDatasetForChartByYearsAndPriceRange = (data = []) => {
       acc[year] = {
         middle: priceUSD,
         min: priceUSD,
-        max: priceUSD
+        max: priceUSD,
       }
     }
     return acc
@@ -127,15 +126,13 @@ export const createDatasetForChartByYearsAndPriceRange = (data = []) => {
   return Object.entries(dataset).map(([key, value]) => ({
     year: parseInt(key),
     middle: value.middle,
-    range: [value.min, value.max]
+    range: [value.min, value.max],
   }))
 }
 
 export const createDatasetForChartByModelsAndPriceRange = (data = []) => {
-
   const dataset = data.reduce((acc, item) => {
-
-    const {markName, modelName, priceUSD} = item
+    const { markName, modelName, priceUSD } = item
     const keyModel = `${markName} ${modelName}`
 
     if (acc[keyModel]) {
@@ -148,7 +145,7 @@ export const createDatasetForChartByModelsAndPriceRange = (data = []) => {
         middle: priceUSD,
         min: priceUSD,
         max: priceUSD,
-        count: 1
+        count: 1,
       }
     }
 
@@ -157,12 +154,17 @@ export const createDatasetForChartByModelsAndPriceRange = (data = []) => {
 
   return Object.entries(dataset)
     .sort((a, b) => b[1].count - a[1].count)
-    .map(([key, value]) => ({model: key, middle: value.middle, range: [value.min, value.max], count: value.count}))
+    .map(([key, value]) => ({
+      model: key,
+      middle: value.middle,
+      range: [value.min, value.max],
+      count: value.count,
+    }))
 }
 
 export const createDatasetForChartByMileageAndYears = (data = []) => {
   const dataset = data.reduce((acc, item) => {
-    const {year, mileage} = item
+    const { year, mileage } = item
 
     if (acc[year]) {
       acc[year].middle = Math.round((acc[year].middle + mileage) / 2)
@@ -172,7 +174,7 @@ export const createDatasetForChartByMileageAndYears = (data = []) => {
       acc[year] = {
         middle: mileage,
         min: mileage,
-        max: mileage
+        max: mileage,
       }
     }
     return acc
@@ -180,12 +182,16 @@ export const createDatasetForChartByMileageAndYears = (data = []) => {
 
   return Object.entries(dataset)
     .sort((a, b) => a[0] - b[0])
-    .map(([key, value]) => ({year: parseInt(key), middle: value.middle, range: [value.min, value.max]}))
+    .map(([key, value]) => ({
+      year: parseInt(key),
+      middle: value.middle,
+      range: [value.min, value.max],
+    }))
 }
 
 export const createDatasetForChartByFuelType = (data = []) => {
   const dataset = data.reduce((acc, item) => {
-    const {fuelType} = item
+    const { fuelType } = item
 
     if (!fuelType || fuelType === 'null') return acc
 
@@ -198,13 +204,12 @@ export const createDatasetForChartByFuelType = (data = []) => {
     return acc
   }, {})
 
-  return Object.entries(dataset)
-    .map(([key, value]) => ({key, value}))
+  return Object.entries(dataset).map(([key, value]) => ({ key, value }))
 }
 
 export const createDatasetForChartByEngineDisplacement = (data = []) => {
   const dataset = data.reduce((acc, item) => {
-    const {engineDisplacement} = item
+    const { engineDisplacement } = item
 
     if (!engineDisplacement || engineDisplacement === 'null') return acc
 
@@ -218,13 +223,13 @@ export const createDatasetForChartByEngineDisplacement = (data = []) => {
   }, {})
 
   return Object.entries(dataset)
-    .map(([key, value]) => ({key, value}))
+    .map(([key, value]) => ({ key, value }))
     .sort((a, b) => a.key - b.key)
 }
 
 export const createDatasetForChartByLocation = (data = []) => {
   const dataset = data.reduce((acc, item) => {
-    const {location} = item
+    const { location } = item
 
     if (!location || location === 'null') return acc
 
@@ -238,13 +243,13 @@ export const createDatasetForChartByLocation = (data = []) => {
   }, {})
 
   return Object.entries(dataset)
-    .map(([key, value]) => ({key, value}))
+    .map(([key, value]) => ({ key, value }))
     .sort((a, b) => b.value - a.value)
 }
 
 export const createDatasetForChartByTransmissionType = (data = []) => {
   const dataset = data.reduce((acc, item) => {
-    const {transmissionType} = item
+    const { transmissionType } = item
 
     if (!transmissionType || transmissionType === 'null') return acc
 
@@ -257,6 +262,5 @@ export const createDatasetForChartByTransmissionType = (data = []) => {
     return acc
   }, {})
 
-  return Object.entries(dataset)
-    .map(([key, value]) => ({key, value}))
+  return Object.entries(dataset).map(([key, value]) => ({ key, value }))
 }

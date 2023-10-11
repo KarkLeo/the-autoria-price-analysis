@@ -1,9 +1,15 @@
-import {useCallback} from "react";
-import axios from "axios";
-import {paginateURL} from "../tools/paginateURL";
-import {parseCars} from "../tools/parseCars";
+import { useCallback } from 'react'
+import axios from 'axios'
+import { paginateURL } from '../tools/paginateURL'
+import { parseCars } from '../tools/parseCars'
 
-export const useFetchCars = (url, setCars, setLoading, setLoadedCount, setIsError) => {
+export const useFetchCars = (
+  url,
+  setCars,
+  setLoading,
+  setLoadedCount,
+  setIsError
+) => {
   return useCallback(async () => {
     setLoading(true)
     setCars([])
@@ -21,7 +27,7 @@ export const useFetchCars = (url, setCars, setLoading, setLoadedCount, setIsErro
 
         if (data.length > 0) {
           setCars((pre) => [...pre, ...data])
-          setLoadedCount( pre => pre + data.length)
+          setLoadedCount((pre) => pre + data.length)
           console.log(`Page ${pageIndex + 1} added to state`)
 
           console.log(`Try to fetch next page`)
@@ -31,7 +37,7 @@ export const useFetchCars = (url, setCars, setLoading, setLoadedCount, setIsErro
           setLoading(false)
         }
       } catch (e) {
-        console.log(e);
+        console.log(e)
         setIsError(true)
         setLoading(false)
         setCars([])
