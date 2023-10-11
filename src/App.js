@@ -85,7 +85,10 @@ function App() {
       {!url && (
         <p className='message'>
           Плагін оптимізований для пошуку на сайті{' '}
-          <a href='https://auto.ria.com/uk/'>Auto.RIA</a>.
+          <a href='https://auto.ria.com/uk/' target='_blank'>
+            Auto.RIA
+          </a>
+          .
         </p>
       )}
 
@@ -137,7 +140,10 @@ function App() {
       {isHelpText && (
         <p className='message'>
           Щоб користуватися аналітикою, перейдіть на{' '}
-          <a href='https://auto.ria.com/uk/advanced-search/?indexName=auto&price.currency=1&abroad.not=0&custom.not=1&size=100'>
+          <a
+            href='https://auto.ria.com/uk/advanced-search/?indexName=auto&price.currency=1&abroad.not=0&custom.not=1&size=100'
+            target='_blank'
+          >
             сторінку пошуку
           </a>
           , встановіть потрібні фільтри, і коли будете на сторінці видачі -
