@@ -33,7 +33,7 @@ function App() {
   const [step, setStep] = useState(STEPS[0])
   const [loading, setLoading] = useState(false)
   const [loadedCount, setLoadedCount] = useState(0)
-  const [isError, setIsError] = useState(true)
+  const [isError, setIsError] = useState(false)
 
   const fetchCarsHandler = useFetchCars(
     url,
